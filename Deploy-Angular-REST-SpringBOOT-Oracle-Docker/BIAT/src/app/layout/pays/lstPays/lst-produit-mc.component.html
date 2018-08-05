@@ -1,0 +1,58 @@
+<div [@routerTransition]>
+
+<div class="container spacer">
+
+  <div class="panel panel-primary">
+
+  <div class="panel-heading"> Liste des Pays Par Mot Clé </div>
+
+  <div class="panel-body">
+
+  <div class="form-group">
+
+  <label>Mot Clé :</label>
+
+  <input type="text" [(ngModel)]="motCle"/>
+
+  <button class="btn btn-primary" (click)="Chercher()">Chercher</button>
+
+  </div>
+
+
+
+<table class="table table-striped" id="table">
+  <tr>
+
+    <th>CODE PAYS</th><th>NOM PAYS</th><th>LIBELLE</th><th></th><th></th>
+
+  </tr>
+
+  <tr *ngFor="let p of pagePays?.content">
+
+    <td>{{p.codePays}}</td>
+    <td>{{p.paysName}}</td>
+    <td>{{p.libelle}}</td>
+    <td>
+      <a (click)="EditProduit(p.reference)" class="clickable">Edit</a>
+    </td>
+    <td>
+        <a (click)="onDeletePays(p)" class="clickable">Delete</a>
+      </td>
+    </tr>
+
+  </table>
+
+
+  <div class="row">
+      <ul class="nav nav-pills">
+        <li [ngClass]="{'active':currentPage==(i)}" *ngFor="let p of pagination; let i=index" class="nav-link">
+         <a (click)="gotoPage(i)">{{i}}</a>
+        </li>
+      </ul>
+
+     </div>
+  </div>
+  </div>
+
+  </div>
+</div>

@@ -1,0 +1,151 @@
+<div [@routerTransition]>
+
+    <div class="container spacer">
+
+        <div class="panel panel-primary"  *ngIf="mode==1">
+
+        <div class="panel-heading"> Nouveau Produit </div>
+
+            <div class="panel-body">
+
+      <div>
+    <div class="form-group">
+
+<label class="control-label">Designation</label>
+<input class="form-control" type="text" [(ngModel)]="produit.designation" />
+
+    </div>
+
+    <div class="form-group">
+
+        <label class="control-label">Prix</label>
+        <input class="form-control" type="text" [(ngModel)]="produit.prix" />
+
+            </div>
+
+            <div class="form-group">
+
+                <label class="control-label">Date</label>
+                <input class="form-control" type="date" [(ngModel)]="produit.date" />
+
+                    </div>
+
+                    <label class="control-label">Pays</label>
+                    <div class="form-group">
+
+
+                            <div class="col-xs-5 selectContainer">
+                            <select class="form-control" [(ngModel)]="produit.pays" >
+                            <option value="">-- Select Pays --</option>
+
+                            <option  *ngFor="let p of comboPays" [ngValue]="p">
+                                {{p.paysName}} -- {{p.libelle}}
+                            </option>
+                        </select>
+                                </div>
+                            </div>
+                            <br/>
+        <button class="btn btn-primary" (click)="ajoutProduit()">Ajout Produit</button>
+
+    </div>
+
+  </div>
+  </div>
+
+  <div class="panel panel-primary"  *ngIf="mode==2">
+
+    <div class="panel heading"> Confirmation Produit </div>
+
+    <div class="panel-body">
+
+      <div>
+
+            <div class="form-group">
+
+                    <label class="control-label">Id :</label>
+                    <label>{{produit.reference}}</label>
+
+                        </div>
+
+    <div class="form-group">
+
+<label class="control-label">Designation :</label>
+<label>{{produit.designation}}</label>
+
+    </div>
+
+    <div class="form-group">
+
+        <label class="control-label">Prix :</label>
+        <label>{{produit.prix}}</label>
+
+            </div>
+
+            <div class="form-group">
+
+                <label class="control-label">Date :</label>
+                <label>{{produit.date | date:'dd/MM/yyyy'}}</label>
+
+                    </div>
+
+        <button class="btn btn-primary" (click)="mode=1">Nouveau Produit</button>
+
+    </div>
+
+  </div>
+  </div>
+
+  <div class="panel panel-primary"  *ngIf="mode==3">
+
+    <div class="panel heading"> Modification Produit </div>
+
+    <div class="panel-body">
+
+      <div>
+
+        <div class="form-group">
+
+            <label class="control-label">Designation</label>
+            <input class="form-control" type="text" [(ngModel)]="produit.designation" />
+
+                </div>
+
+                <div class="form-group">
+
+                    <label class="control-label">Prix</label>
+                    <input class="form-control" type="text" [(ngModel)]="produit.prix" />
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="control-label">Date</label>
+                            <input class="form-control" type="date" [(ngModel)]="produit.date" />
+
+                                </div>
+
+                                <div class="form-group">
+
+
+                                    <div class="col-xs-5 selectContainer">
+                                    <select class="form-control" [(ngModel)]="produit.pays" >
+                                    <option value="">-- Select Pays --</option>
+
+                                    <option  *ngFor="let p of comboPays" [ngValue]="p" [(ngModel)]="p.paysName">
+                                        {{p.paysName}}
+                                    </option>
+                                </select>
+                                        </div>
+                                    </div>
+                                    <br/>
+    <button class="btn btn-primary" (click)="modifProduit()">Modifier Produit</button>
+
+        <button class="btn btn-primary" (click)="onAddProduit()">Nouveau Produit</button>
+
+    </div>
+
+  </div>
+  </div>
+
+    </div>
+</div>

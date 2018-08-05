@@ -1,0 +1,71 @@
+<div [@routerTransition]>
+
+<div class="container spacer">
+
+  <div class="panel panel-primary"  *ngIf="mode==1">
+  
+  <div class="panel-heading"> Nouveau Pays </div>
+  
+  <div class="panel-body">
+  
+    <div>
+  <div class="form-group">
+
+<label class="control-label">Nom Pays</label>
+<input class="form-control" type="text" [(ngModel)]="pays.paysName" />
+
+  </div>
+
+  <div class="form-group">
+
+      <label class="control-label">Libelle</label>
+      <input class="form-control" type="text" [(ngModel)]="pays.libelle" />
+      
+          </div>
+
+      <button class="btn btn-primary" (click)="ajoutPays()">Ajout Pays</button>
+
+  </div>
+  
+</div>
+</div>
+
+<div class="panel panel-primary"  *ngIf="mode==2">
+  
+  <div class="panel heading"> Confirmation Pays </div>
+  
+  <div class="panel-body">
+  
+    <div>
+
+          <div class="form-group">
+
+                  <label class="control-label">Id :</label>
+                  <label>{{pays.codePays}}</label>
+                  
+                      </div>
+      
+  <div class="form-group">
+
+<label class="control-label">Nom Pays :</label>
+<label>{{pays.paysName}}</label>
+
+  </div>
+
+  <div class="form-group">
+
+      <label class="control-label">Libelle :</label>
+      <label>{{pays.libelle}}</label>
+      
+          </div>
+
+      <button class="btn btn-primary" (click)="mode=1">Nouveau Pays</button>
+      
+  </div>
+  
+</div>
+</div>
+
+  </div>
+</div>
+  

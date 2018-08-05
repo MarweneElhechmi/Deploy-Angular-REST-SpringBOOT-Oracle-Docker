@@ -1,0 +1,188 @@
+<div [@routerTransition]>
+
+    <div class="container spacer">
+
+
+        <mat-card>
+            <mat-card-content>
+        <mat-tab-group class="demo-tab-group">
+
+            <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{errorMessage}}</div>
+
+            <!--   TAB 1  -->
+            <mat-tab label="Société">
+                <button (click)="t24()"></button>
+                <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{errorMessage}}</div>
+
+                <p class="texte"> Sté Solar Power Company (SOPOC) </p>
+                <h5 style="text-align:center">ID_T24 :<b class="texte"> {{produit.reference}} </b></h5>
+
+ <div class="panel-body" id="tab1">
+
+      <div>
+<!-- ajouter style="width:700px" dans les inputs pour les tas8irhom -->
+<!-- ajouter class="input_Style" dans chaque div pour center et tas8ir -->
+
+        <div class="form-group" >
+
+            <label class="control-label">Designation</label>
+            <input class="form-control" type="text" [(ngModel)]="produit.designation" />
+
+                </div>
+
+                <div class="form-group">
+
+                    <label class="control-label">Prix</label>
+                    <input class="form-control" type="text" [(ngModel)]="produit.prix"/>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="control-label">Date</label>
+                            <input class="form-control" type="date" [ngModel]="produit.date|date:'yyyy-MM-dd' " />
+
+                                </div>
+
+                                <p-table [columns]="cols" [value]="pays" [paginator]="true" selectionMode="single" [(selection)]="selectedCar" (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="5">
+                                    <ng-template pTemplate="header" let-columns>
+                                        <tr>
+                                            <th *ngFor="let col of columns">
+                                                {{col.header}}
+                                            </th>
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="body" let-rowData let-columns="columns">
+                                            <tr [pSelectableRow]="rowData">
+                                                <td>{{rowData.codePays}}</td>
+                                                <td>{{rowData.paysName}}</td>
+                                                <td>{{rowData.libelle}}</td>
+                                            </tr>
+                                        </ng-template>
+                                        <ng-template pTemplate="summary" let-rowData>
+                                                <div style="text-align:left">
+                                                    <button type="button" pButton icon="fa fa-plus" (click)="showDialogToAdd()" label="Add"></button>
+                                                </div>
+                                            </ng-template>
+                                </p-table>
+
+                                    <br/>
+
+    </div>
+
+</div>
+        <script>
+        var tab = $('#tab1').tabs('getSelected');
+        tab.panel('refresh');
+        </script>
+
+
+
+
+            </mat-tab>
+            <!--   FIN TAB 1 -->
+
+
+
+            <!--   TAB 2  -->
+            <mat-tab label="Informations Générales">
+
+                <p-table [columns]="cols" [value]="pays"  [paginator]="true" selectionMode="single" [(selection)]="selectedCar" (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="5">
+                    <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th *ngFor="let col of columns">
+                                {{col.header}}
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-columns="columns">
+                        <tr [pSelectableRow]="rowData">
+                            <td>{{rowData.codePays}}</td>
+                            <td>{{rowData.paysName}}</td>
+                            <td>{{rowData.libelle}}</td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary" let-rowData>
+                            <div style="text-align:left">
+                                <button type="button" pButton icon="fa fa-plus" (click)="showDialogToAdd()" label="Add"></button>
+                            </div>
+                        </ng-template>
+                </p-table>
+
+                <!--
+                    <table class="table table-striped" id="table">
+                    <tr>
+
+                      <th>CODE PAYS</th><th>NOM PAYS</th><th>LIBELLE</th><th></th><th></th>
+
+                    </tr>
+
+                    <tr *ngFor="let pay of pays">
+
+                      <td>{{pay.codePays}}</td>
+                      <td>{{pay.paysName}}</td>
+                      <td>{{pay.libelle}}</td>
+
+                      </tr>
+
+                    </table>
+
+-->
+
+
+            </mat-tab>
+             <!--   FIN TAB 2 -->
+
+
+
+            <!--   TAB 1  -->
+            <mat-tab label="Activité et Chiffre">Content 3
+
+
+            </mat-tab>
+            <!--   FIN TAB 1=3 -->
+
+          </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+
+            <p-dialog header="Pays Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [width]="400">
+                <div class="ui-g ui-fluid" *ngIf="car">
+                    <div class="ui-g-12">
+                        <div class="ui-g-4">
+                            <label for="vin">Code Pays</label>
+                        </div>
+                        <div class="ui-g-8">
+                            <input pInputText id="vin" [(ngModel)]="car.codePays" />
+                        </div>
+                    </div>
+                    <div class="ui-g-12">
+                        <div class="ui-g-4">
+                            <label for="year">Libelle</label>
+                        </div>
+                        <div class="ui-g-8">
+                            <input pInputText id="year" [(ngModel)]="car.libelle" />
+                        </div>
+                    </div>
+                    <div class="ui-g-12">
+                        <div class="ui-g-4">
+                            <label for="brand">Pays Name</label>
+                        </div>
+                        <div class="ui-g-8">
+                            <input pInputText id="brand" [(ngModel)]="car.paysName" />
+                        </div>
+                    </div>
+                </div>
+                <p-footer>
+                    <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                        <button type="button" pButton icon="fa fa-close" (click)="delete()" label="Delete"></button>
+                        <button type="button" pButton icon="fa fa-check" (click)="save()" label="Save"></button>
+                    </div>
+                </p-footer>
+            </p-dialog>
+
+            <br/>
+
+
+    </div>
+</div>

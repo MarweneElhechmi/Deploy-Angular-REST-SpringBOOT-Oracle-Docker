@@ -1,0 +1,41 @@
+<h1 mat-dialog-title>Ajout d'un pays à un produit</h1>
+
+<div mat-dialog-content>
+  Veuillez Choisir un pays
+  <ul>
+        <input matInput placeholder="Pays" [(ngModel)]="data.paysPop">
+
+    <!-- <li>
+      <span *ngIf="data.animal === 'panda'">&#10003;</span>Panda
+    </li>
+    <li>
+      <span *ngIf="data.animal === 'unicorn'">&#10003;</span> Unicorn
+    </li>
+    <li>
+      <span *ngIf="data.animal === 'lion'">&#10003;</span> Lion
+    </li> -->
+    <li>
+    <label class="control-label">Pays</label>
+                    <div class="form-group">
+
+
+                            <div class="col-xs-5 selectContainer">
+                            <select class="form-control" [(ngModel)]="data.paysPop" >
+                            <option value="">-- Select Pays --</option>
+
+                            <option *ngFor="let p of paysModal" [(ngValue)]="p.paysName" [ngValue]="p" >
+                                {{p.paysName}} -- {{p.libelle}}
+                            </option>
+                        </select>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+</div>
+
+
+                        <div mat-dialog-actions>
+                        <button mat-button [mat-dialog-close]="data.paysPop" cdkFocusInitial>Valider</button>
+                                </div>
+
+

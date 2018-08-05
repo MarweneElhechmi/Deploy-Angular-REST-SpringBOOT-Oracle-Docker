@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+        <a routerLink='/dashboard' title="BIAT">
+            <img class="logo-img" src="assets/images/logo_Biat.png" width="160px" alt="BIAT">
+</a>
+    <a class="navbar-brand" href="#"> </a>
+    <div>
+        <button md-button ng-click="toggleLeft()" class="md-raised">
+          Toggle Sidenav
+        </button>
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{errorMessage}}</div>
+
+    <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+        <!-- <span class="navbar-toggler-icon"></span> -->
+        <i class="fa fa-bars text-muted" aria-hidden="true"></i>
+    </button>
+    <div class="collapse navbar-collapse">
+
+        <ul class="navbar-nav ml-auto">
+
+                <div class="ui-g ui-fluid">
+                    <div class="ui-g-12 ui-md-4">
+                        <div class="ui-inputgroup">
+                        <!--<button pButton label="Recherche" [class.selected]="reference === selectedId" (click)="onEditProduit_Ref(reference.value);reference.value='' "  type="button" ></button>-->
+                        <button pButton label="Recherche" routerLink="/blank-page/:reference" (click)="onEditProduit_Ref(reference.value);reference.value='' "  type="button" ></button>
+                        <input  type="text" [(ngModel)]="referenceInput" #reference="ngModel"  placeholder="{{ 'Search' | translate }}">
+                            <!-- Hedhi Sibling to sibling bi DataSharingService -->
+
+                            <!-- <input  type="text" [(ngModel)]="referenceInput" #reference="ngModel"  placeholder="{{ 'Search' | translate }}">
+ -->
+                    </div>
+                </div>
+                </div>&nbsp;
+
+            <li class="nav-item dropdown"  ngbDropdown>
+                <a href="javascript:void(0)" class="nav-link" style="color:black" ngbDropdownToggle>
+                    <i class="fa fa-user"></i> {{currentUser.fullName}} <b class="caret"></b>
+                </a>
+                <div class="dropdown-menu-right" ngbDropdownMenu>
+                    <a class="dropdown-item" href="javascript:void(0)">
+                        <i class="fa fa-fw fa-user"></i> {{ 'Profile' | translate }}
+                    </a>
+                    <a class="dropdown-item" href="javascript:void(0)">
+                        <i class="fa fa-fw fa-envelope"></i> {{ 'Inbox' | translate }}
+                    </a>
+                    <a class="dropdown-item" href="javascript:void(0)">
+                        <i class="fa fa-fw fa-gear"></i> {{ 'Settings' | translate }}
+                    </a>
+                    <a class="dropdown-item" [routerLink]="['/login']" (click)="logOut()">
+                        <i class="material-icons">exit_to_app</i> {{ 'Log Out' | translate }}
+                    </a>
+
+
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

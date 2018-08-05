@@ -1,0 +1,37 @@
+<div class="container spacer">
+
+<div class="panel panel-primary">
+
+<div class="panel-heading"> Liste des Produits </div>
+
+<div class="panel-body">
+
+<table class="table table-striped">
+<tr>
+
+  <th>REFERENCE</th><th>DESIGNATION</th><th>PRIX</th><th>DATE</th>
+
+</tr>
+
+<tr *ngFor="let p of pageProduits">
+  
+  <td>{{p.reference}}</td>  
+  <td>{{p.designation}}</td>  
+  <td>{{p.prix}}</td>
+  <td>{{p.date}}</td>  
+  
+  </tr>
+
+</table>
+<div class="row">
+    <ul class="nav nav-pills">
+      <li [ngClass]="{'active':currentPage==(i)}" *ngFor="let p of pagination; let i=index" class="clickable">
+       <a (click)="gotoPage(i)">{{i}}</a>
+      </li>
+    </ul>
+
+   </div>
+
+</div>
+</div>
+</div>

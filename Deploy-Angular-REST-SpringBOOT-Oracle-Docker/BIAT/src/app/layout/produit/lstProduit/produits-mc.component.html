@@ -1,0 +1,57 @@
+<div [@routerTransition]>
+  <div class="container spacer">
+
+    <div class="panel panel-primary">
+
+    <div class="panel-heading"> Liste des Produits Par Mot Clé </div>
+
+    <div class="panel-body">
+
+    <div class="form-group">
+
+    <label>Mot Clé :</label>
+
+    <input type="text" [(ngModel)]="motCle"/>
+
+    <button class="btn btn-primary" (click)="Chercher()">Chercher</button>
+
+    </div>
+
+
+    <table class="table table-striped">
+    <tr>
+
+      <th>REFERENCE</th><th>DESIGNATION</th><th>PRIX</th><th>DATE</th><th></th><th></th>
+
+    </tr>
+
+    <tr *ngFor="let p of pageProduits?.content">
+
+      <td>{{p.reference}}</td>
+      <td>{{p.designation}}</td>
+      <td>{{p.prix}}</td>
+      <td>{{p.date | date:'dd/MM/yyyy'}}</td>
+      <td>
+        <a (click)="onEditProduit(p.reference)" class="clickable">Edit</a>
+      </td>
+      <td>
+          <button routerLink="/produits-new/{{p.reference}}" class="clickable">Edit Prod</button>
+        </td>
+      <td>
+          <a (click)="onDeleteProduit(p)" class="clickable">Delete</a>
+        </td>
+      </tr>
+
+    </table>
+    <div class="row">
+        <ul class="nav nav-pills">
+          <li [ngClass]="{'active':currentPage==(i)}" *ngFor="let p of pagination; let i=index" class="clickable">
+           <a (click)="gotoPage(i)">{{i}}</a>
+          </li>
+        </ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

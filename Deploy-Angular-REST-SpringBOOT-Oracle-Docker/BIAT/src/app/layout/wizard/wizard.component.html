@@ -1,0 +1,74 @@
+<div [@routerTransition]>
+
+    <div class="container spacer">
+
+      <mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Nouveau Pays</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Nom Pays" [(ngModel)]="pays.paysName" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+      <input matInput placeholder="Libelle Pays" [(ngModel)]="pays.libelle" formControlName="secondCtrl" required>
+    </mat-form-field>
+      <div>
+        <!--<button mat-button matStepperNext (click)="ajoutPays()">Next</button>-->
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Nouveau Produit</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Designation" [(ngModel)]="produit.designation" formControlName="thirdCtrl" required>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <input matInput placeholder="Prix" [(ngModel)]="produit.prix" formControlName="fourthCtrl" required>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker"
+        [ngModel]="produit.date  | date:'dd/MM/yyyy'" [(ngModel)]="produit.date" formControlName="fifthCtrl" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker [calendarHeaderComponent]="exampleHeader"></mat-datepicker>
+      </mat-form-field>
+
+<br/>
+
+      <br/>
+
+            <button mat-button (click)="openDialog()">Pays</button>
+                 {{paysPopup}}
+            <input matInput value="{{paysPopup}}" [(ngModel)]="produit.pays">
+
+            <br/>
+            <br/>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext (click)="ajoutProduit()">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()" routerLink="/lst-pays">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
+
+
+
+
+
+
+    </div>
+</div>
